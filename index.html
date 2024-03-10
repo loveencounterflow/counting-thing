@@ -1,0 +1,47 @@
+
+
+<style>
+
+:root {
+  --y-counter-height:       100mm;
+  --y-counter-width:        var(--y-counter-height);
+  --y-counter-font-size:    calc( var(--y-counter-height) * 0.8 ); }
+
+y-counter {
+  display:                  block;
+  position:                 relative;
+  background-color:         yellow;
+  width:                    var(--y-counter-height);
+  height:                   var(--y-counter-width); }
+
+y-counter digit {
+  display:                  block;
+  position:                 absolute;
+  outline:                  1px solid red;
+  opacity:                  0.2;
+  text-align-last:          center;
+  font-size:                var(--y-counter-font-size);
+  width:                    100%;
+  height:                   100%; }
+
+</style>
+
+<y-counter>
+  <digit>0</digit>
+  <digit>1</digit>
+  <digit>2</digit>
+  <digit>3</digit>
+  <digit>4</digit>
+  <digit>5</digit>
+  <digit>6</digit>
+  <digit>7</digit>
+  <digit>8</digit>
+  <digit>9</digit>
+</y-counter>
+
+<script>
+  log = console.log;
+  y_counter = document.querySelector( 'y-counter' );
+  log( '^234^', y_counter);
+  </script>
+
