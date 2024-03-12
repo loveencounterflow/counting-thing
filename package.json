@@ -1,0 +1,27 @@
+{
+  "name": "counting-thing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodexh lib/watcher.js",
+    "serve-dev": "nodexh lib/watcher.js -- dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "debounce": "^2.0.0",
+    "five-server": "^0.3.2",
+    "guy": "^13.7.2",
+    "intersock": "^0.0.6",
+    "intertype": "^100.0.4",
+    "linefinder": "^1.0.12",
+    "moonriver": "^4.8.4",
+    "mudom": "^1.0.10",
+    "nodexh": "^2.2.2",
+    "webguy": "^5.2.1",
+    "zx": "^7.2.3"
+  }
+}
