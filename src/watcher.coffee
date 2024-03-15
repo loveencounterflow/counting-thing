@@ -92,13 +92,20 @@ xxx =
       source_path     = d.path
       public_filename = "#{d.barename}.html"
       public_path     = PATH.join G.public_path,  public_filename
-      help GUY.datetime.now(), '^$html_from_md@345-2^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
+      help GUY.datetime.now(), '^$html_from_md@345-1^', GUY.trm.reverse " #{d.filename} -> #{public_filename} "
       #.....................................................................................................
+      ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
       GUY.temp.with_directory { prefix: 'lfxaiif', }, ({ path: tmp_dir_path }) ->
         tmp_path        = PATH.join tmp_dir_path,     public_filename
-        ### TAINT rewrite by using functions that call `zx`, catch errors, wait ###
+        # #...................................................................................................
+        # try
+        #   await zx"""pandoc -o #{tmp_path} #{source_path}"""
+        # catch error
+        #   message = error.message ? error
+        #   warn '^$html_from_md@345-2^', GUY.trm.reverse " #{message} "
+        #...................................................................................................
         try
-          await zx"""pandoc -o #{tmp_path} #{source_path}"""
+          await zx"""cp #{source_path} #{tmp_path}"""
         catch error
           message = error.message ? error
           warn '^$html_from_md@345-3^', GUY.trm.reverse " #{message} "
