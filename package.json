@@ -15,6 +15,7 @@
     "debounce": "^2.0.0",
     "five-server": "^0.3.2",
     "guy": "^13.7.2",
+    "htmx.org": "^1.9.11",
     "intersock": "^0.0.6",
     "intertype": "^100.0.4",
     "linefinder": "^1.0.12",

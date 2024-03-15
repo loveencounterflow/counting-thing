@@ -14,6 +14,9 @@ dependencies:
   guy:
     specifier: ^13.7.2
     version: 13.7.2(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
+  htmx.org:
+    specifier: ^1.9.11
+    version: 1.9.11
   intersock:
     specifier: ^0.0.6
     version: 0.0.6
@@ -953,6 +956,10 @@ packages:
       minimist: 1.2.8
       prompts: 2.4.2
       semver: 7.6.0
+    dev: false
+
+  /htmx.org@1.9.11:
+    resolution: {integrity: sha512-WlVuICn8dfNOOgYmdYzYG8zSnP3++AdHkMHooQAzGZObWpVXYathpz/I37ycF4zikR6YduzfCvEcxk20JkIUsw==}
     dev: false
 
   /http-errors@1.8.1:
