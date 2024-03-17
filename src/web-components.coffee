@@ -27,7 +27,6 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
     ### TAINT could be systematized with template attributes ###
     @setAttribute 'size',   '100px'   unless ( @getAttribute 'size'   )?
     @setAttribute 'color',  'yellow'  unless ( @getAttribute 'color'  )?
-    @_update_style()
     return null
 
   #---------------------------------------------------------------------------------------------------------
