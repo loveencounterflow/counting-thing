@@ -111,9 +111,7 @@ on pointerdown
 <!-- =================================================================================================== -->
 
 <script>
-// Create a class for the element
 
-customElements.define("custom-square", web_components.Square);
 
 
 const add = document.querySelector(".add");

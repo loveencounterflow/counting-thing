@@ -1,7 +1,12 @@
 
 'use strict'
 
-class Square extends HTMLElement
+#===========================================================================================================
+globalThis.web_components = {}
+
+
+#===========================================================================================================
+customElements.define 'custom-square', class web_components.Custom_Square extends HTMLElement
 
   #---------------------------------------------------------------------------------------------------------
   @state: { count: 0, }
@@ -48,5 +53,4 @@ class Square extends HTMLElement
     get: -> return [ 'color', 'size', ];
 
 
-globalThis.web_components = { Square, }
 
