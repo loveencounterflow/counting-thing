@@ -15,8 +15,8 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
   constructor: ->
     super()
     @constructor.state.count++
-    root            = @attachShadow { mode: 'open' }
-    root.innerHTML  = """<style></style><div>#{@constructor.state.count}</div>"""
+    @attachShadow { mode: 'open' }
+    @shadowRoot.innerHTML = """<style></style><div>#{@constructor.state.count}</div>"""
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
@@ -40,8 +40,7 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
 
   #---------------------------------------------------------------------------------------------------------
   _update_style: ->
-    style = @shadowRoot.querySelector 'style'
-    style.textContent = """
+    ( @shadowRoot.querySelector 'style' ).textContent = """
       div {
         width:            #{@getAttribute 'size'};
         height:           #{@getAttribute 'size'};
