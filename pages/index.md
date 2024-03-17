@@ -50,6 +50,7 @@
 <!-- // js alert( 'helo' ); end -->
 <!-- // wait 0.5s then -->
 
+<!-- ### TAINT this should become a WebComponent -->
 <!-- thx to https://github.com/SamHerbert/SVG-Loaders/blob/master/svg-loaders/circles.svg?short_path=de8e4de -->
 <div id=spinner _="
   install Removable end
@@ -61,6 +62,7 @@
 
 <h1>CountingThing</h1>
 
+<!-- ### TAINT this should become a WebComponent -->
 <div id=bus _='
   on E queue all
     append `${event.detail.to.id}:${event.detail.key} ` to my innerHTML
