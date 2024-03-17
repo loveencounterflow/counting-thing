@@ -91,7 +91,7 @@ on pointerdown
   end">Try me: press and hold</button></span></p>
 
 <custom-square></custom-square>
-<custom-square color=magenta size=50></custom-square>
+<custom-square color=magenta size=5mm></custom-square>
 
 <div id=buttonbox>
   <button class=add>Add custom-square to DOM</button>
@@ -140,7 +140,7 @@ add.onclick = function () {
 
 update.onclick = function () {
   // Randomly update square's attributes
-  square.setAttribute("size", random(50, 200));
+  square.setAttribute("size", random(50, 200) + 'px' );
   square.setAttribute(
     "color",
     `rgb(${random(0, 255)}, ${random(0, 255)}, ${random(0, 255)})`

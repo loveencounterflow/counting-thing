@@ -40,7 +40,7 @@ class Square extends HTMLElement
   connectedCallback: ->
     console.log "Custom square element added to page."
     ### TAINT could be systematized with template attributes ###
-    @setAttribute 'size',   '100'     unless ( @getAttribute 'size'   )?
+    @setAttribute 'size',   '100px'   unless ( @getAttribute 'size'   )?
     @setAttribute 'color',  'yellow'  unless ( @getAttribute 'color'  )?
     @_update_style()
     return null
@@ -60,12 +60,12 @@ class Square extends HTMLElement
     style = @shadowRoot.querySelector 'style'
     style.textContent = """
       div {
-        width:            #{@getAttribute 'size'}px;
-        height:           #{@getAttribute 'size'}px;
+        width:            #{@getAttribute 'size'};
+        height:           #{@getAttribute 'size'};
         background-color: #{@getAttribute 'color'}; }"""
     return null
 
-  # Specify observed attributes so that attributeChangedCallback will work
+  #---------------------------------------------------------------------------------------------------------
   Object.defineProperty @, 'observedAttributes',
     get: -> return [ 'color', 'size', ];
 
