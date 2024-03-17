@@ -7,7 +7,8 @@
 <link rel=stylesheet href='./reset.css'>
 <link rel=stylesheet href='./demo-galley.css'>
 <script src='/htmx.js'></script>
-<script src="https://unpkg.com/hyperscript.org@0.9.12"></script>
+<script src="/_hyperscript.min.js"></script>
+<!-- <script src="https://unpkg.com/hyperscript.org@0.9.12"></script> -->
 
 <style>
 
