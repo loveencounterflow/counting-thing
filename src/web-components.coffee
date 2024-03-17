@@ -12,28 +12,6 @@ class Square extends HTMLElement
     @constructor.state.count++
     root            = @attachShadow { mode: 'open' }
     root.innerHTML  = """<style></style><div>#{@constructor.state.count}</div>"""
-  # square.setAttribute("size", "100");
-  # square.setAttribute("color", "red");
-    # log '^Square@1^', root.innerHTML
-    # log '^Square@2^', root.innerHTML.parent
-    # log '^Square@3^', root.parent
-    # log '^Square@4^', root.parentElement
-    # log '^Square@5^', root.innerHTML.parentElement
-    # log '^Square@6^', root.querySelector('style')
-    # log '^Square@7^', root.querySelector('style').parentElement
-    # log '^Square@8^', root.outerHTML
-    # log '^Square@9^', root
-    # log '^Square@10^', @
-    # log '^Square@10^', @innerHTML
-    # log '^Square@10^', @outerHTML
-    # log '^Square@10^', @outerHTML.setAttribute
-    # log '^Square@10^', @setAttribute
-    # log '^Square@10^', @setAttribute 'size', '100'
-    # div     = document.createElement 'div'
-    # style   = document.createElement 'style'
-    # root.appendChild style
-    # root.appendChild div
-    # @setAttribute 'foobar', true
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
