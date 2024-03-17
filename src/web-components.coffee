@@ -5,7 +5,7 @@
 globalThis.web_components = {}
 state                     = { count: 0, }
 log                       = ( P... ) -> console.log ++state.count, P...
-set_getter                = ( owner, name, getter ) -> Object.defineProperty owner, name, { get: getter, }
+set_getter                = ( owner, name, get ) -> Object.defineProperty owner, name, { get, }
 
 #===========================================================================================================
 customElements.define 'custom-square', class web_components.Custom_Square extends HTMLElement
