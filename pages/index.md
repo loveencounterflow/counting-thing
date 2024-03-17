@@ -74,7 +74,7 @@
   <button class=show _='on click toggle .visible on #spinner'>Toggle spinner</button>
   <!-- <button class=show _='on click send E to #spinner'>Toggle spinner using event</button> -->
   <button class=show _='on click send E(to:#spinner,key:"toggle") to #bus'>Toggle spinner using event to bus</button>
-  <button class=show _='on click send E(to:#buttonbox) to #bus'>send event to #buttonbox</button>
+  <button class=show _='on click send E(to:#buttonbox,key:`never-mind`) to #bus'>send event to #buttonbox</button>
   <button class=show _='on click remove #spinner'>Remove spinner</button>
   <button class=show hx-on:click='alert("on click toggle .visible on #spinner")'>Show message</button></div>
 
