@@ -4,13 +4,15 @@
 #===========================================================================================================
 globalThis.web_components = {}
 state                     = { count: 0, }
-log                        = ( P... ) -> console.log ++state.count, P...
+log                       = ( P... ) -> console.log ++state.count, P...
+set_getter                = ( owner, name, getter ) -> Object.defineProperty owner, name, { get: getter, }
 
 #===========================================================================================================
 customElements.define 'custom-square', class web_components.Custom_Square extends HTMLElement
 
   #---------------------------------------------------------------------------------------------------------
   @state: { count: 0, }
+  set_getter @, 'observedAttributes', -> [ 'color', 'size', ]
 
   #---------------------------------------------------------------------------------------------------------
   constructor: ->
@@ -18,8 +20,8 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
     @constructor.state.count++
     @attachShadow { mode: 'open' }
     @shadowRoot.innerHTML = """<style></style><div>#{@constructor.state.count}</div>"""
-    Object.defineProperty @, '$style',  get: -> @shadowRoot.querySelector 'style'
-    Object.defineProperty @, '$div',    get: -> @shadowRoot.querySelector 'div'
+    set_getter @, '$style', -> @shadowRoot.querySelector 'style'
+    set_getter @, '$div',   -> @shadowRoot.querySelector 'div'
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
@@ -49,9 +51,6 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
         background-color: #{@getAttribute 'color'}; }"""
     return null
 
-  #---------------------------------------------------------------------------------------------------------
-  Object.defineProperty @, 'observedAttributes',
-    get: -> return [ 'color', 'size', ];
 
 
 
