@@ -3,7 +3,8 @@
 
 #===========================================================================================================
 globalThis.web_components = {}
-
+state                     = { count: 0, }
+log                        = ( P... ) -> console.log ++state.count, P...
 
 #===========================================================================================================
 customElements.define 'custom-square', class web_components.Custom_Square extends HTMLElement
@@ -23,19 +24,19 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
 
   #---------------------------------------------------------------------------------------------------------
   connectedCallback: ->
-    console.log "Custom square element added to page."
+    log "Custom square element added to page."
     ### TAINT could be systematized with template attributes ###
     @setAttribute 'size',   '100px'   unless ( @getAttribute 'size'   )?
     @setAttribute 'color',  'yellow'  unless ( @getAttribute 'color'  )?
     return null
 
   #---------------------------------------------------------------------------------------------------------
-  disconnectedCallback: -> console.log "Custom square element removed from page."
-  adoptedCallback: -> console.log "Custom square element moved to new page."
+  disconnectedCallback: -> log "Custom square element removed from page."
+  adoptedCallback: -> log "Custom square element moved to new page."
 
   #---------------------------------------------------------------------------------------------------------
-  attributeChangedCallback: ( name, oldValue, newValue ) ->
-    console.log "Custom square element attributes changed."
+  attributeChangedCallback: ( name, prv_value, value ) ->
+    log "Custom square element attributes changed:", { name, value, }
     @_update_style()
     return null
 
