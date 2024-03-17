@@ -91,6 +91,8 @@ on pointerdown
           over 250ms
   end">Try me: press and hold</button></span></p>
 
+<custom-square></custom-square>
+<custom-square color=magenta size=50></custom-square>
 
 <div id=buttonbox>
   <button class=add>Add custom-square to DOM</button>
@@ -114,16 +116,6 @@ on pointerdown
 
 customElements.define("custom-square", web_components.Square);
 
-function updateStyle(elem) {
-  const shadow = elem.shadowRoot;
-  shadow.querySelector("style").textContent = `
-    div {
-      width: ${elem.getAttribute("size")}px;
-      height: ${elem.getAttribute("size")}px;
-      background-color: ${elem.getAttribute("color")};
-    }
-  `;
-}
 
 const add = document.querySelector(".add");
 const update = document.querySelector(".update");
@@ -140,8 +132,6 @@ function random(min, max) {
 add.onclick = function () {
   // Create a custom square element
   square = document.createElement("custom-square");
-  square.setAttribute("size", "100");
-  square.setAttribute("color", "red");
   document.body.appendChild(square);
 
   update.disabled = false;
