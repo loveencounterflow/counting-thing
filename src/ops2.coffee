@@ -61,6 +61,8 @@ LINE                      = require 'linefinder'
   await AE.emit 'whatever', [ 'my', 'data', ]
   log '^123-2^', "AE is using WeakMap:  ", ( AE.listeners instanceof globalThis.WeakMap )
   log '^123-2^', "AE is using Map:      ", ( AE.listeners instanceof globalThis.Map )
+  AE.on 'whatever', ( event ) -> log '^123-3^', event
+  AE.emit 'whatever', [ 1, 2, ]
   return null
 
 
