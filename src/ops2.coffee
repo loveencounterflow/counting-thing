@@ -7,6 +7,16 @@ globalThis.log            = console.log
 globalThis.debug          = console.debug
 µ                         = require 'mudom'
 LINE                      = require 'linefinder'
+{ AE
+  Async_events
+  AE_Event
+  AE_Event_results
+  Datom
+  isa
+  validate
+  isa_optional
+  validate_optional     } = require 'intertalk'
+
 
 # _Distributor = LINE.Distributor
 
@@ -47,9 +57,11 @@ LINE                      = require 'linefinder'
 #===========================================================================================================
 µ.DOM.ready ->
   log '^123-1^', "ready"
+  AE.on 'whatever', ( event ) -> log '^443^', event
+  await AE.emit 'whatever', [ 'my', 'data', ]
+  log '^123-2^', "AE is using WeakMap:  ", ( AE.listeners instanceof globalThis.WeakMap )
+  log '^123-2^', "AE is using Map:      ", ( AE.listeners instanceof globalThis.Map )
   return null
-
-
 
 
 
