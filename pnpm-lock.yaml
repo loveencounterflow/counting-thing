@@ -35,6 +35,9 @@ dependencies:
   nodexh:
     specifier: ^2.2.2
     version: 2.2.2(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
+  subsidiary:
+    specifier: ^0.3.0
+    version: 0.3.0
   webguy:
     specifier: ^5.2.1
     version: 5.2.1
@@ -1679,6 +1682,10 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       ansi-regex: 6.0.1
+    dev: false
+
+  /subsidiary@0.3.0:
+    resolution: {integrity: sha512-Mkl/ZOb/+BgUzotUEoy7YfYyVPxU5SXYiVkT0xp7GAptCRQigLnkBYJks0/6TRYrhEV0qFvPBG1rOyvDL1e1Mw==}
     dev: false
 
   /supports-color@5.5.0:
