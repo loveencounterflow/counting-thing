@@ -9,8 +9,8 @@ dependencies:
     specifier: ^2.0.0
     version: 2.0.0
   five-server:
-    specifier: ^0.3.2
-    version: 0.3.2
+    specifier: ^0.3.3
+    version: 0.3.3
   guy:
     specifier: ^13.7.2
     version: 13.7.2(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
@@ -20,6 +20,9 @@ dependencies:
   intersock:
     specifier: ^0.0.6
     version: 0.0.6
+  intertalk:
+    specifier: ^0.0.11
+    version: 0.0.11
   intertype:
     specifier: ^100.0.4
     version: 100.0.4
@@ -699,8 +702,8 @@ packages:
       - supports-color
     dev: false
 
-  /five-server@0.3.2:
-    resolution: {integrity: sha512-rMG8X6F//r2Hpnv/Ud38LOYXkQpziRmqS+oxv/mYsNwiBTY2skkDNhvuF8833skco3rAtC6GS+4gcarbVGqgcA==}
+  /five-server@0.3.3:
+    resolution: {integrity: sha512-iQfI0N8pKVdtxx8FTzx0J0Y/dT9f3nMDMDoljnYeoiN3ESvuASx4aK517jsDct7ikT710yOCpFHNNkW/xeyNGA==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
@@ -1009,6 +1012,12 @@ packages:
       bufferutil: 4.0.8
     transitivePeerDependencies:
       - utf-8-validate
+    dev: false
+
+  /intertalk@0.0.11:
+    resolution: {integrity: sha512-iIzRCyw/M8KfZTT0ehcQKjSU9tZPvPGbbTVr29FWKwq3vmYyj8bpyR0TBTv86RiYysRJGbgRIPeDm0qulsUyeA==}
+    dependencies:
+      webguy: 5.2.1
     dev: false
 
   /intertype-legacy@7.7.1:
