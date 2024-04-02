@@ -43,7 +43,6 @@
     end
 </script>
 
-
 </head>
 
 <body hx-ext="class-tools, preload">
@@ -167,6 +166,7 @@ remove.onclick = function () {
 };
 
 </script>
+
 
 </body>
 </html>
