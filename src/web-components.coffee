@@ -6,6 +6,7 @@ globalThis.web_components = {}
 state                     = { count: 0, }
 log                       = ( P... ) -> console.log ++state.count, P...
 set_getter                = ( owner, name, get ) -> Object.defineProperty owner, name, { get, }
+µ                         = require 'mudom'
 
 
 #===========================================================================================================
@@ -18,6 +19,7 @@ customElements.define 'my-spinner', class web_components.My_spinner extends HTML
     @attachShadow { mode: 'open' }
     @shadowRoot.innerHTML = """<style>
       div {
+        opacity:  0;
         width:    135px;
         height:   135px }
       </style><div>
@@ -31,6 +33,18 @@ customElements.define 'my-spinner', class web_components.My_spinner extends HTML
         </svg>
         </div>"""
     return undefined
+
+
+  #---------------------------------------------------------------------------------------------------------
+  connectedCallback: ->
+    log "spinner added to page."
+    log '^243^', µ
+    log '^243^', µ.DOM
+    log '^243^', µ.DOM.on @, 'E', -> log '^325^', "received `E`"
+    return null
+
+  #---------------------------------------------------------------------------------------------------------
+  custom_method: ->
 
 
 #===========================================================================================================
@@ -80,3 +94,32 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
 
 
 
+# µ.DOM.on document, 'E', ( event ) ->
+#   log '^document@3^', event
+# µ.DOM.emit_custom_event 'E', { key: 1, }
+# µ.DOM.ready ->
+#   log '^document@4^', "ready"
+#   µ.DOM.on ( µ.DOM.select_first '#spinner' ), 'E', ( event ) ->
+#     log '^spinner@1^', event
+#   µ.DOM.emit_custom_event 'E', { key: 1, }
+
+# µ.DOM.emit_custom_event 'E', { key: 1, }
+µ.DOM.ready ->
+  log '^document@4^', "ready"
+  # spinner = µ.DOM.select_first '#spinner'
+  # do =>
+  #   handler = ( event ) ->
+  #     log 'document', event.detail, event.detail.to, event.detail.to is @
+  #     if ( event.detail?.to )? and event.detail.to isnt @
+  #       event.detail.to.dispatchEvent event
+  #   document.addEventListener 'E', handler, { capture: false, passive: false, }
+  #   return null
+  # do =>
+  #   handler = ( event ) -> log 'spinner', event.detail
+  #   spinner.addEventListener 'E', handler, { capture: false, passive: false, }
+  #   return null
+  # # µ.DOM.emit_custom_event 'E', { key: 1, }
+  # document.dispatchEvent new CustomEvent 'E', { detail: { key: 1, } }
+  # spinner.dispatchEvent new CustomEvent 'E', { detail: { key: 2, } }
+  # # document.dispatchEvent new CustomEvent 'E', { detail: { to: document, key: 3, } }
+  # document.dispatchEvent new CustomEvent 'E', { detail: { to: spinner, key: 4, } }
