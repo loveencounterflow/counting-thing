@@ -83,15 +83,23 @@
   '></div>
 
 <!-- <div><button hx-put="/contact/1">Show spinner</button></div> -->
-<div>
-  <!-- <button class=show _='on click toggle .visible on #spinner'>Toggle spinner</button> -->
-  <!-- <button class=show _='on click send E to #spinner'>Toggle spinner using event</button> -->
-  <button class=show _='on click send E(to:#spinner,key:"toggle") to #bus'>Toggle spinner</button>
-  <button class=show _='on click send E(to:#spinner,key:"show") to #bus'>Show spinner</button>
-  <button class=show _='on click send E(to:#spinner,key:"hide") to #bus'>Hide spinner</button>
-  <button class=show _='on click send E(to:#spinner,key:"remove") to #bus'>Remove spinner</button>
-  <!-- <button class=show _='on click send E(to:#buttonbox,key:`never-mind`) to #bus'>send event to #buttonbox</button> -->
-  <button class=show hx-on:click='alert("on click toggle .visible on #spinner")'>Show message</button></div>
+<div class=hyperscript-buttons>
+  <!-- <button _='on click toggle .visible on #spinner'>Toggle spinner</button> -->
+  <!-- <button _='on click send E to #spinner'>Toggle spinner using event</button> -->
+  <button _='on click send E(to:#spinner,key:"toggle") to #bus'>Toggle spinner</button>
+  <button _='on click send E(to:#spinner,key:"show") to #bus'>Show spinner</button>
+  <button _='on click send E(to:#spinner,key:"hide") to #bus'>Hide spinner</button>
+  <button _='on click send E(to:#spinner,key:"remove") to #bus'>Remove spinner</button>
+  <!-- <button _='on click send E(to:#buttonbox,key:`never-mind`) to #bus'>send event to #buttonbox</button> -->
+  <button hx-on:click='alert("on click toggle .visible on #spinner")'>Show message</button>
+  </div>
+
+<div class=hyperscript-buttons>
+  <button>Toggle spinner</button>
+  <button>Show spinner</button>
+  <button>Hide spinner</button>
+  <button>Remove spinner</button>
+  </div>
 
 <p><span class="center" style="margin-top: calc(-1.5*var(--gap))"><button class="crowded padding padding-block allcaps" _="
 on pointerdown
