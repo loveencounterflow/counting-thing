@@ -33,8 +33,8 @@ dependencies:
     specifier: ^4.8.4
     version: 4.8.4(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
   mudom:
-    specifier: ^1.0.10
-    version: 1.0.10
+    specifier: ^1.0.11
+    version: 1.0.11
   nodexh:
     specifier: ^2.2.2
     version: 2.2.2(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
@@ -1170,7 +1170,7 @@ packages:
       guy: 13.7.2(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(chokidar@3.6.0)(dayjs@1.11.10)(tmp@0.2.3)
       intersock: 0.0.1
       intertype: 0.119.1(acorn-loose@8.4.0)(acorn-walk@8.3.2)(acorn@8.11.3)(astring@1.8.6)(tmp@0.2.3)
-      mudom: 1.0.10
+      mudom: 1.0.11
     transitivePeerDependencies:
       - acorn
       - acorn-loose
@@ -1297,8 +1297,8 @@ packages:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
     dev: false
 
-  /mudom@1.0.10:
-    resolution: {integrity: sha512-IZ1cytrG5Xgij1c+sXVZ6pAV7aDucr1MqQD/Q9sdP0zKQgj8710Gn2Xqmi/1BY845qsohQ+dV/q/nDz/Tq9xng==}
+  /mudom@1.0.11:
+    resolution: {integrity: sha512-1Wfr5R0+i+lWbewKA3jL5avwhp4dUCGdhFvitmbweS0Jc0mog7caCW2kw4P484vLtf//U70b+u8oo9YAJ6nSXg==}
     dependencies:
       chrome-a11y-caret-browsing-extension: 1.0.2
       intertype: 7.7.1
