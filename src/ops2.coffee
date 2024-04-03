@@ -57,12 +57,32 @@ LINE                      = require 'linefinder'
 #===========================================================================================================
 µ.DOM.ready ->
   log '^ops2@123-3^', "ready"
-  AE.on 'whatever', ( event ) -> log '^ops2@123-4^', event
+  AE.on 'whatever', ( ae_event ) -> log '^ops2@123-4^', ae_event
   await AE.emit 'whatever', [ 'my', 'data', ]
   log '^ops2@123-5^', "AE is using WeakMap:  ", ( AE.listeners instanceof globalThis.WeakMap )
   log '^ops2@123-6^', "AE is using Map:      ", ( AE.listeners instanceof globalThis.Map )
-  AE.on 'whatever', ( event ) -> log '^ops2@123-7^', event
+  AE.on 'whatever', ( ae_event ) -> log '^ops2@123-7^', ae_event
   AE.emit 'whatever', [ 1, 2, ]
+  #=========================================================================================================
+  ### this code has been put here as we still have to decide on a better place for it ###
+  #.........................................................................................................
+  $ = ([ selector ]) -> µ.DOM.select_first selector
+  #.........................................................................................................
+  AE.on 'spinner-toggle', spinner_toggle = ( ae_event ) ->
+    dom_event = ae_event.$value
+    µ.DOM.toggle_class $'#spinner', 'visible'
+    return null
+  #.........................................................................................................
+    # on E[to is me and key is "show"] from #bus queue all
+    #   send E(to:me,key:"toggle") to #bus unless me matches .visible
+    # on E[to is me and key is "hide"] from #bus queue all
+    #   send E(to:me,key:"toggle") to #bus if me matches .visible
+  #.........................................................................................................
+  AE.ae_event_from_dom_event = ( element, dom_event_name, ae_event_name ) ->
+    µ.DOM.on element, dom_event_name, ( dom_event ) => AE.emit ae_event_name, event
+  #.........................................................................................................
+  AE.ae_event_from_dom_event $'#spinner-toggle', 'click', 'spinner-toggle'
+  #=========================================================================================================
   return null
 
 

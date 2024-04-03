@@ -29,6 +29,9 @@
     width:                  10mm;
     height:                 10mm; }
 
+#spinner-toggle {
+  outline:  2px solid red;
+}
 
 </style>
 
@@ -91,6 +94,13 @@
   <button _='on click send E(to:#spinner,key:"remove") to #bus'>Remove spinner</button>
   <!-- <button _='on click send E(to:#buttonbox,key:`never-mind`) to #bus'>send event to #buttonbox</button> -->
   <button hx-on:click='alert("on click toggle .visible on #spinner")'>Show message</button>
+  </div>
+
+<div class=hyperscript-buttons>
+  <button id=spinner-toggle>Toggle spinner</button>
+  <button id=spinner-show>Show spinner</button>
+  <button id=spinner-hide>Hide spinner</button>
+  <button id=spinner-remove>Remove spinner</button>
   </div>
 
 <p><span class="center" style="margin-top: calc(-1.5*var(--gap))"><button class="crowded padding padding-block allcaps" _="
