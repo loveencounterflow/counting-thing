@@ -7,15 +7,10 @@ globalThis.log            = console.log
 globalThis.debug          = console.debug
 µ                         = require 'mudom'
 LINE                      = require 'linefinder'
-{ AE
-  Async_events
-  AE_Event
-  AE_Event_results
-  Datom
-  isa
-  validate
-  isa_optional
-  validate_optional     } = require 'intertalk'
+{ IT }                    = require 'intertalk'
+# Intertalk Note Results Datom isa validate isa_optional validate_optional
+
+
 
 
 # _Distributor = LINE.Distributor
@@ -57,19 +52,19 @@ LINE                      = require 'linefinder'
 #===========================================================================================================
 µ.DOM.ready ->
   log '^ops2@123-3^', "ready"
-  AE.on 'whatever', ( ae_event ) -> log '^ops2@123-4^', ae_event
-  await AE.emit 'whatever', [ 'my', 'data', ]
-  log '^ops2@123-5^', "AE is using WeakMap:  ", ( AE.listeners instanceof globalThis.WeakMap )
-  log '^ops2@123-6^', "AE is using Map:      ", ( AE.listeners instanceof globalThis.Map )
-  AE.on 'whatever', ( ae_event ) -> log '^ops2@123-7^', ae_event
-  AE.emit 'whatever', [ 1, 2, ]
+  IT.on 'whatever', ( note ) -> log '^ops2@123-4^', note
+  await IT.emit 'whatever', [ 'my', 'data', ]
+  log '^ops2@123-5^', "IT is using WeakMap:  ", ( IT.listeners instanceof globalThis.WeakMap )
+  log '^ops2@123-6^', "IT is using Map:      ", ( IT.listeners instanceof globalThis.Map )
+  IT.on 'whatever', ( note ) -> log '^ops2@123-7^', note
+  IT.emit 'whatever', [ 1, 2, ]
   #=========================================================================================================
   ### this code has been put here as we still have to decide on a better place for it ###
   #.........................................................................................................
   $ = ([ selector ]) -> µ.DOM.select_first selector
   #.........................................................................................................
-  AE.on 'spinner-toggle', spinner_toggle = ( ae_event ) ->
-    dom_event = ae_event.$value
+  IT.on 'spinner-toggle', spinner_toggle = ( note ) ->
+    event = note.$value
     µ.DOM.toggle_class $'#spinner', 'visible'
     return null
   #.........................................................................................................
@@ -78,10 +73,10 @@ LINE                      = require 'linefinder'
     # on E[to is me and key is "hide"] from #bus queue all
     #   send E(to:me,key:"toggle") to #bus if me matches .visible
   #.........................................................................................................
-  AE.ae_event_from_dom_event = ( element, dom_event_name, ae_event_name ) ->
-    µ.DOM.on element, dom_event_name, ( dom_event ) => AE.emit ae_event_name, event
+  IT.ae_event_from_dom_event = ( element, event_name, note_name ) ->
+    µ.DOM.on element, event_name, ( event ) => IT.emit note_name, event
   #.........................................................................................................
-  AE.ae_event_from_dom_event $'#spinner-toggle', 'click', 'spinner-toggle'
+  IT.ae_event_from_dom_event $'#spinner-toggle', 'click', 'spinner-toggle'
   #=========================================================================================================
   return null
 
