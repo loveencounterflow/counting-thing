@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "file": "",
+  "sourceRoot": "",
+  "sources": [
+    "../src/string-markers.coffee"
+  ],
+  "names": [],
+  "mappings": "AACA;EAAA,IAAC,CAAA,GAAD,GAAO,IAAC,CAAA,IAAD,GAAQ,QAAA,CAAE,KAAF,EAAA,GAAS,WAAT,CAAA;AACf,QAAA,CAAA,EAAA,UAAA,EAAA,CAAA,EAAA,GAAA,EAAA;IAAE,CAAA,GAAI,KAAK,CAAE,CAAF;IACT,KAAA,yDAAA;;MACE,CAAA,IAAK,UAAU,CAAC,QAAX,CAAA,CAAA,GAAwB,KAAK,CAAE,GAAA,GAAM,CAAR;IADpC;AAEA,WAAO;EAJM;AAAf",
+  "sourcesContent": [
+    "\n@SQL = @HTML = ( parts, expressions... ) ->\n  R = parts[ 0 ]\n  for expression, idx in expressions\n    R += expression.toString() + parts[ idx + 1 ]\n  return R\n"
+  ]
+}
