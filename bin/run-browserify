@@ -7,5 +7,14 @@ cd "$home"
 mkdir -p public/browserified
 # browserify -r combokeys --standalone Combokeys -o public/browserified/combokeys.js
 # browserify --require intersock --require mudom --require linefinder --debug -o public/browserified/mudom+linefinder.js
-browserify --require webguy --require intersock --require mudom --require linefinder --require subsidiary --require intertalk --debug -o public/browserified/webguy+intersock+mudom+linefinder.js
+browserify \
+  --require webguy \
+  --require intersock \
+  --require mudom \
+  --require linefinder \
+  --require subsidiary \
+  --require intertalk \
+  --require './lib/string-markers' \
+  --debug \
+  -o public/browserified/webguy+intersock+mudom+linefinder.js
 # rm --force public/browserified/webguy+intersock+mudom+linefinder.js.tmp-browserify-*
