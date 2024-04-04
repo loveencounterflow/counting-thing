@@ -7,6 +7,9 @@ state                     = { count: 0, }
 log                       = ( P... ) -> console.log ++state.count, P...
 set_getter                = ( owner, name, get ) -> Object.defineProperty owner, name, { get, }
 µ                         = require 'mudom'
+{ HTML, }                 = require '/lib/string-markers'
+{ SUBSIDIARY }            = require 'subsidiary'
+TI                        = require 'intertalk'
 
 
 #===========================================================================================================
@@ -17,7 +20,7 @@ customElements.define 'my-spinner', class web_components.My_spinner extends HTML
     ### SVG thx to https://github.com/SamHerbert/SVG-Loaders/blob/master/svg-loaders/circles.svg ###
     super()
     @attachShadow { mode: 'open' }
-    @shadowRoot.innerHTML = """<style>
+    @shadowRoot.innerHTML = HTML"""<style>
       div {
         opacity:  0;
         width:    135px;
@@ -40,11 +43,58 @@ customElements.define 'my-spinner', class web_components.My_spinner extends HTML
     log "spinner added to page."
     log '^243^', µ
     log '^243^', µ.DOM
-    log '^243^', µ.DOM.on @, 'E', -> log '^325^', "received `E`"
+    log '^243^', µ.DOM.on @, 'E', -> log '^webc@325-1^', "received `E`"
     return null
 
+
+#===========================================================================================================
+customElements.define 'my-counter', class web_components.My_counter extends HTMLElement
+
   #---------------------------------------------------------------------------------------------------------
-  custom_method: ->
+  constructor: ->
+    super()
+    @attachShadow { mode: 'open' }
+    @shadowRoot.innerHTML = HTML"""
+      <style>
+        div {
+          width:    10mm;
+          height:   10mm;
+          outline:  1px solid red; }
+        </style><div id=digit>0</div>
+      """
+    #.......................................................................................................
+    set_getter @, '$style', -> @shadowRoot.querySelector 'style'
+    set_getter @, '$div',   -> @shadowRoot.querySelector 'div'
+    #.......................................................................................................
+    SUBSIDIARY.tie_one
+      host: @
+      host_key: '_'
+      subsidiary_key: '$'
+      enumerable: true
+      subsidiary: sub = @constructor.$
+    TI.on 'counter-increment', ( P... ) => @$.on_counter_increment.call sub, P...
+    #.......................................................................................................
+    return undefined
+
+  #---------------------------------------------------------------------------------------------------------
+  @$:
+    on_counter_increment: ->
+      log '^webc@325-2^', "counter-increment"
+      log '^webc@325-3^', counter = parseInt @_.$div.textContent, 10
+      if counter is 9 then  @_.$div.textContent = 0
+      else                  @_.$div.textContent = counter + 1
+      return null
+
+
+
+  #---------------------------------------------------------------------------------------------------------
+  connectedCallback: ->
+    log "counter added to page."
+    log '^243^', µ
+    log '^243^', µ.DOM
+    log '^243^', µ.DOM.on @, 'E', -> log '^webc@325-4^', "received `E`"
+    return null
+
 
 
 #===========================================================================================================
@@ -59,7 +109,7 @@ customElements.define 'custom-square', class web_components.Custom_Square extend
     super()
     @constructor.state.count++
     @attachShadow { mode: 'open' }
-    @shadowRoot.innerHTML = """<style></style><div>#{@constructor.state.count}</div>"""
+    @shadowRoot.innerHTML = HTML"""<style></style><div>#{@constructor.state.count}</div>"""
     set_getter @, '$style', -> @shadowRoot.querySelector 'style'
     set_getter @, '$div',   -> @shadowRoot.querySelector 'div'
     return undefined
