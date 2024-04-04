@@ -21,8 +21,8 @@ dependencies:
     specifier: ^0.0.6
     version: 0.0.6
   intertalk:
-    specifier: ^0.0.13
-    version: 0.0.13
+    specifier: ^0.0.14
+    version: 0.0.14
   intertype:
     specifier: ^100.0.4
     version: 100.0.4
@@ -1014,8 +1014,8 @@ packages:
       - utf-8-validate
     dev: false
 
-  /intertalk@0.0.13:
-    resolution: {integrity: sha512-Us4Dn008I05mL9cPJNziSt+vM46NjshFDGzvsWwIGa1/8G05dIi5AzoneeaUEoIY3KVGgwXKq1P2/fdSamVCCA==}
+  /intertalk@0.0.14:
+    resolution: {integrity: sha512-5iq4K4+KvxrA424jkPOdaOU6HJz1l06TKvPa++hGJeAPl9kGQF5kgbRYWkW+IYC0C2lZ5P62aVHJsS2jkOvItg==}
     dependencies:
       webguy: 5.2.1
     dev: false
