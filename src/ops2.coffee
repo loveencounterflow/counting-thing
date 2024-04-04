@@ -7,7 +7,7 @@ globalThis.log            = console.log
 globalThis.debug          = console.debug
 µ                         = require 'mudom'
 LINE                      = require 'linefinder'
-{ IT }                    = require 'intertalk'
+IT                        = require 'intertalk'
 # Intertalk Note Results Datom isa validate isa_optional validate_optional
 
 
