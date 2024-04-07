@@ -41,9 +41,9 @@ customElements.define 'my-spinner', class web_components.My_spinner extends HTML
   #---------------------------------------------------------------------------------------------------------
   connectedCallback: ->
     log "spinner added to page."
-    log '^243^', µ
-    log '^243^', µ.DOM
-    log '^243^', µ.DOM.on @, 'E', -> log '^webc@325-1^', "received `E`"
+    # log '^webc@325-1^', µ
+    # log '^webc@325-2^', µ.DOM
+    # log '^webc@325-3^', µ.DOM.on @, 'E', -> log '^webc@325-4^', "received `E`"
     return null
 
 
@@ -67,32 +67,42 @@ customElements.define 'my-counter', class web_components.My_counter extends HTML
     set_getter @, '$div',   -> @shadowRoot.querySelector 'div'
     #.......................................................................................................
     SUBSIDIARY.tie_one
-      host: @
-      host_key: '_'
-      subsidiary_key: '$'
-      enumerable: true
-      subsidiary: sub = @constructor.$
+      host:             @
+      host_key:         '_'
+      subsidiary_key:   '$'
+      enumerable:       true
+      subsidiary:       sub = @constructor.$
     TI.on 'counter-increment', ( P... ) => @$.on_counter_increment.call sub, P...
     #.......................................................................................................
     return undefined
 
   #---------------------------------------------------------------------------------------------------------
   @$:
-    on_counter_increment: ->
-      log '^webc@325-2^', "counter-increment"
-      log '^webc@325-3^', counter = parseInt @_.$div.textContent, 10
+
+    #-------------------------------------------------------------------------------------------------------
+    on_counter_increment: ( note ) ->
+      # log '^webc@325-5^', "counter-increment"
+      counter = parseInt @_.$div.textContent, 10
       if counter is 9 then  @_.$div.textContent = 0
       else                  @_.$div.textContent = counter + 1
       return null
 
-
+    #-------------------------------------------------------------------------------------------------------
+    on_counter_set: ( note ) ->
+      ### TAINT validate.integer ###
+      @_.$div.textContent = note.$value
+      return null
 
   #---------------------------------------------------------------------------------------------------------
   connectedCallback: ->
     log "counter added to page."
-    log '^243^', µ
-    log '^243^', µ.DOM
-    log '^243^', µ.DOM.on @, 'E', -> log '^webc@325-4^', "received `E`"
+    log '^webc@325-7^', @
+    log '^webc@325-8^', @outerHTML
+    log '^webc@325-9^', @attributes
+    log '^webc@325-10^', Array.from @attributes
+    log '^webc@325-11^', [ kv.nodeName, kv.nodeValue, ] for kv in [ @attributes... ]
+    ### TAINT implement µDOM method ###
+    log '^webc@325-11^', Object.fromEntries ( [ kv.name, kv.value, ] for kv in @attributes )
     return null
 
 

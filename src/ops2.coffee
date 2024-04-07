@@ -70,8 +70,8 @@ IT                        = require 'intertalk'
   #.........................................................................................................
   IT.on 'mous-moved', mouse_moved = ( note ) ->
     log '^ops2@123-1^', { x: note.$value.clientX, y: note.$value.clientY, }
-  IT.on 'counter-increment', counter_increment = ( note ) ->
-    log '^ops2@123-1^', "counter-increment"
+  # IT.on 'counter-increment', counter_increment = ( note ) ->
+  #   log '^ops2@123-1^', "counter-increment"
   #.........................................................................................................
     # on E[to is me and key is "show"] from #bus queue all
     #   send E(to:me,key:"toggle") to #bus unless me matches .visible
@@ -80,7 +80,9 @@ IT                        = require 'intertalk'
   #.........................................................................................................
   IT.emit_on_event $'#spinner-toggle', 'click', 'spinner-toggle'
   # IT.emit_on_event 'click', 'spinner-toggle'
-  IT.emit_on_event 'click', 'counter-increment'
+  IT.emit_on_event 'click',         'counter-increment'
+  IT.emit_on_event 'change',        'document-changed'
+  IT.emit_on_event $'#my-counter',  'document-changed'
   # IT.emit_on_event 'mousemove', 'mous-moved'
   #=========================================================================================================
   return null
