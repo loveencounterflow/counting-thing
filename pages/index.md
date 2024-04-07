@@ -71,7 +71,7 @@
 <h1>Spinner (defined as WebComponent)</h1>
 
 <my-spinner></my-spinner>
-<my-counter foo=bar mysetting=9></my-counter>
+<my-counter id=my-counter foo=bar mysetting=9></my-counter>
 
 <h1>CountingThing</h1>
 

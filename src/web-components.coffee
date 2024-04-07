@@ -9,7 +9,6 @@ set_getter                = ( owner, name, get ) -> Object.defineProperty owner,
 µ                         = require 'mudom'
 { HTML, }                 = require '/lib/string-markers'
 { SUBSIDIARY }            = require 'subsidiary'
-TI                        = require 'intertalk'
 
 
 #===========================================================================================================
@@ -72,7 +71,7 @@ customElements.define 'my-counter', class web_components.My_counter extends HTML
       subsidiary_key:   '$'
       enumerable:       true
       subsidiary:       sub = @constructor.$
-    TI.on 'counter-increment', ( P... ) => @$.on_counter_increment.call sub, P...
+    intertalk.on 'counter-increment', ( P... ) => @$.on_counter_increment.call sub, P...
     #.......................................................................................................
     return undefined
 

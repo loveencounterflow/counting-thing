@@ -7,7 +7,8 @@ globalThis.log            = console.log
 globalThis.debug          = console.debug
 µ                         = require 'mudom'
 LINE                      = require 'linefinder'
-IT                        = require 'intertalk'
+{ Intertalk }             = require 'intertalk'
+globalThis.intertalk      = new Intertalk()
 # Intertalk Note Results Datom isa validate isa_optional validate_optional
 
 
@@ -52,25 +53,25 @@ IT                        = require 'intertalk'
 #===========================================================================================================
 µ.DOM.ready ->
   log '^ops2@123-3^', "ready"
-  IT.on 'whatever', ( note ) -> log '^ops2@123-4^', note
-  await IT.emit 'whatever', [ 'my', 'data', ]
-  log '^ops2@123-5^', "IT is using WeakMap:  ", ( IT.listeners instanceof globalThis.WeakMap )
-  log '^ops2@123-6^', "IT is using Map:      ", ( IT.listeners instanceof globalThis.Map )
-  IT.on 'whatever', ( note ) -> log '^ops2@123-7^', note
-  IT.emit 'whatever', [ 1, 2, ]
+  intertalk.on 'whatever', ( note ) -> log '^ops2@123-4^', note
+  await intertalk.emit 'whatever', [ 'my', 'data', ]
+  log '^ops2@123-5^', "intertalk is using WeakMap:  ", ( intertalk.listeners instanceof globalThis.WeakMap )
+  log '^ops2@123-6^', "intertalk is using Map:      ", ( intertalk.listeners instanceof globalThis.Map )
+  intertalk.on 'whatever', ( note ) -> log '^ops2@123-7^', note
+  intertalk.emit 'whatever', [ 1, 2, ]
   #=========================================================================================================
   ### this code has been put here as we still have to decide on a better place for it ###
   #.........................................................................................................
   $ = ([ selector ]) -> µ.DOM.select_first selector
   #.........................................................................................................
-  IT.on 'spinner-toggle', spinner_toggle = ( note ) ->
+  intertalk.on 'spinner-toggle', spinner_toggle = ( note ) ->
     event = note.$value
     µ.DOM.toggle_class $'#spinner', 'visible'
     return null
   #.........................................................................................................
-  IT.on 'mous-moved', mouse_moved = ( note ) ->
+  intertalk.on 'mous-moved', mouse_moved = ( note ) ->
     log '^ops2@123-1^', { x: note.$value.clientX, y: note.$value.clientY, }
-  # IT.on 'counter-increment', counter_increment = ( note ) ->
+  # intertalk.on 'counter-increment', counter_increment = ( note ) ->
   #   log '^ops2@123-1^', "counter-increment"
   #.........................................................................................................
     # on E[to is me and key is "show"] from #bus queue all
@@ -78,12 +79,12 @@ IT                        = require 'intertalk'
     # on E[to is me and key is "hide"] from #bus queue all
     #   send E(to:me,key:"toggle") to #bus if me matches .visible
   #.........................................................................................................
-  IT.emit_on_event $'#spinner-toggle', 'click', 'spinner-toggle'
-  # IT.emit_on_event 'click', 'spinner-toggle'
-  IT.emit_on_event 'click',         'counter-increment'
-  IT.emit_on_event 'change',        'document-changed'
-  IT.emit_on_event $'#my-counter',  'document-changed'
-  # IT.emit_on_event 'mousemove', 'mous-moved'
+  intertalk.emit_on_event $'#spinner-toggle', 'click', 'spinner-toggle'
+  # intertalk.emit_on_event 'click', 'spinner-toggle'
+  intertalk.emit_on_event 'click',         'counter-increment'
+  intertalk.emit_on_event 'change',        'document-changed'
+  intertalk.emit_on_event $'#my-counter',  'document-changed'
+  # intertalk.emit_on_event 'mousemove', 'mous-moved'
   #=========================================================================================================
   return null
 
