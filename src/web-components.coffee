@@ -9,7 +9,7 @@ set_getter                = ( owner, name, get ) -> Object.defineProperty owner,
 µ                         = require 'mudom'
 { HTML, }                 = require '/lib/string-markers'
 { SUBSIDIARY }            = require 'subsidiary'
-
+{ rpr }                   = ( require 'webguy' ).trm
 
 #===========================================================================================================
 customElements.define 'my-spinner', class web_components.My_spinner extends HTMLElement
@@ -90,6 +90,67 @@ customElements.define 'my-counter', class web_components.My_counter extends HTML
     on_counter_set: ( note ) ->
       ### TAINT validate.integer ###
       @_.$div.textContent = note.$value
+      return null
+
+  #---------------------------------------------------------------------------------------------------------
+  connectedCallback: ->
+    log "counter added to page."
+    log '^webc@325-7^', @
+    log '^webc@325-8^', @outerHTML
+    log '^webc@325-9^', @attributes
+    log '^webc@325-10^', Array.from @attributes
+    log '^webc@325-11^', [ kv.nodeName, kv.nodeValue, ] for kv in [ @attributes... ]
+    ### TAINT implement µDOM method ###
+    log '^webc@325-11^', Object.fromEntries ( [ kv.name, kv.value, ] for kv in @attributes )
+    return null
+
+#===========================================================================================================
+customElements.define 'my-logger', class web_components.My_logger extends HTMLElement
+
+  #---------------------------------------------------------------------------------------------------------
+  constructor: ->
+    super()
+    @attachShadow { mode: 'open' }
+    @shadowRoot.innerHTML = HTML"""
+      <style>
+        div {
+          width:    150mm;
+          height:   15mm;
+          outline:  1px solid red; }
+        </style><div id=infobox>0</div>
+      """
+    #.......................................................................................................
+    SUBSIDIARY.tie_one
+      host:             @
+      host_key:         '_'
+      subsidiary_key:   '$'
+      enumerable:       true
+      subsidiary:       sub = @constructor.$
+    #.......................................................................................................
+    @$.message_count = 0
+    set_getter @$, '$style',   -> @_.shadowRoot.querySelector 'style'
+    set_getter @$, '$infobox', -> @_.shadowRoot.querySelector '#infobox'
+    intertalk.on_any ( P... ) => @$.log.call sub, P...
+    #.......................................................................................................
+    return undefined
+
+  #---------------------------------------------------------------------------------------------------------
+  @$:
+
+    #-------------------------------------------------------------------------------------------------------
+    log: ( note, ctl ) ->
+      @message_count++
+      ### TAINT use divs, flexbox ###
+      @$infobox.textContent += '\n'
+      @$infobox.textContent += @message_count
+      @$infobox.textContent += ' '
+      @$infobox.textContent += rpr note
+      return null
+
+    #-------------------------------------------------------------------------------------------------------
+    on_counter_set: ( note ) ->
+      ### TAINT validate.integer ###
+      @_.$infobox.textContent = note.$value
       return null
 
   #---------------------------------------------------------------------------------------------------------

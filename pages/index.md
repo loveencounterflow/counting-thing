@@ -72,6 +72,7 @@
 
 <my-spinner></my-spinner>
 <my-counter id=my-counter foo=bar mysetting=9></my-counter>
+<my-logger id=my-logger></my-logger>
 
 <h1>CountingThing</h1>
 
