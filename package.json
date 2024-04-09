@@ -17,7 +17,7 @@
     "guy": "^13.7.2",
     "htmx.org": "^1.9.11",
     "intersock": "^0.0.6",
-    "intertalk": "^0.0.17",
+    "intertalk": "^0.0.21",
     "intertype": "^100.0.4",
     "linefinder": "^1.0.12",
     "moonriver": "^4.8.4",
@@ -25,6 +25,6 @@
     "nodexh": "^2.2.2",
     "subsidiary": "^0.3.0",
     "webguy": "^5.2.1",
-    "zx": "^8.0.0"
+    "zx": "^8.0.1"
   }
 }
