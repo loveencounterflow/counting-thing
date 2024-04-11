@@ -69,7 +69,7 @@ globalThis.intertalk      = new Intertalk()
     µ.DOM.toggle_class $'#spinner', 'visible'
     return null
   #.........................................................................................................
-  intertalk.on 'mous-moved', mouse_moved = ( note ) ->
+  intertalk.on 'mouse-moved', mouse_moved = ( note ) ->
     log '^ops2@123-1^', { x: note.$value.clientX, y: note.$value.clientY, }
   # intertalk.on 'counter-increment', counter_increment = ( note ) ->
   #   log '^ops2@123-1^', "counter-increment"
